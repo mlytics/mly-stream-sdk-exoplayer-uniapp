@@ -1,0 +1,49 @@
+{
+	"name": "mlyplayer",
+	"id": "mlyplayer",
+	"version": "0.1.29",
+	"description": "mlyplayer",
+	"_dp_type": "nativeplugin",
+	"_dp_nativeplugin": {
+		"android": {
+			"plugins": [
+				{
+					"type": "component",
+					"name": "mlyplayer",
+					"class": "com.mlytics.uni.UniExoPlayer"
+				},
+				{
+					"type": "module",
+					"name": "UniMlyDriver",
+					"class": "com.mlytics.uni.UniMLYDriver"
+				}
+			],
+			"hooksClass": "",
+			"integrateType": "aar",
+			"dependencies": [
+				"com.google.android.exoplayer:exoplayer:2.18.1",
+				"com.squareup.okhttp3:okhttp:4.10.0",
+				"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4",
+				"com.google.code.gson:gson:2.10.1",
+				"io.sentry:sentry-android:6.17.0",
+				"com.google.protobuf:protobuf-kotlin:3.21.12",
+				"org.webrtc:google-webrtc:1.0.28513",
+				"com.googlecode.protobuf-java-format:protobuf-java-format:1.4",
+				{
+					"id": "io.github.centrifugal:centrifuge-java",
+					"source": "implementation('io.github.centrifugal:centrifuge-java:0.2.8', {exclude group: 'com.google.protobuf', module: 'protobuf-javalite'})"
+				}
+
+			],
+			"compileOptions": {
+				"sourceCompatibility": "1.8",
+				"targetCompatibility": "1.8"
+			},
+			"minSdkVersion": "26",
+			"useAndroidX": true,
+			"permissions": [
+
+			]
+		}
+	}
+}
