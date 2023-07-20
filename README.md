@@ -35,3 +35,5 @@ stop() stop player
 play() resume player when pause
 pause() pause player
 ```
+
+# Notice: This project has been deprecated and is succeeded by [mly-stream-sdk-uniapp](https://github.com/mlytics/mly-stream-sdk-uniapp).
