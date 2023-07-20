@@ -24,7 +24,7 @@ driver.initialize({
 |src|String||play source URL|
 |autoplay|Boolean|true|true: start play when ready|
 |muted|Boolean|false|true: muted|
-|controls|Boolean|true|true: show contolls|
+|controls|Boolean|true|true: show controls|
 
 ​
 ### mlyplayer functions:
