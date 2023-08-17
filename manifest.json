@@ -2,8 +2,8 @@
     "name" : "Mlytics Player",
     "appid" : "__UNI__7319E7E",
     "description" : "",
-    "versionName" : "0.1.29",
-    "versionCode" : 129,
+    "versionName" : "0.1.30",
+    "versionCode" : 130,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

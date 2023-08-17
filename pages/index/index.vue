@@ -25,6 +25,24 @@
 				<button class="button" type="primary" @click="controlsClick(false)">Hide</button>
 			</view>
 		</view>
+		<view class="btn">
+			<view style="margin-bottom: 10px;padding-left: 10px;">
+				Mux Allowed: {{isMuxAllowed}}
+			</view>
+			<view class="box">
+				<button class="button" type="primary" @click="muxAllowedClick()(true)">Yes</button>
+				<button class="button" type="primary" @click="muxAllowedClick(false)">No</button>
+			</view>
+		</view>
+		<view class="btn">
+			<view style="margin-bottom: 10px;padding-left: 10px;">
+				Loader Allowed: {{isLoaderAllowed}}
+			</view>
+			<view class="box">
+				<button class="button" type="primary" @click="loaderAllowedClick(true)">Yes</button>
+				<button class="button" type="primary" @click="loaderAllowedClick(false)">No</button>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -34,7 +52,9 @@
 		data() {
 			return {
 				muted: false,
-				controls: true
+				controls: true,
+				isMuxAllowed: true,
+				isLoaderAllowed: true,
 			}
 		},
 		onLoad() {
@@ -65,6 +85,14 @@
 			controlsClick(controls) {
 				this.controls = controls
 				uni.$emit('controls',controls)
+			},
+			muxAllowedClick(b) {
+				this.isMuxAllowed = b
+				uni.$emit('isMuxAllowed',b)
+			},
+			loaderAllowedClick(b) {
+				this.isLoaderAllowed = b
+				uni.$emit('isLoaderAllowed',b)
 			}
 		}
 	}

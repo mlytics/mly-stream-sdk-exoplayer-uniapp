@@ -1,6 +1,6 @@
 <template>
 	<view class="player-wrapper">
-		<mlyplayer ref="player" :src="src" :autoplay="autoplay" :muted="muted" :controls="controls" :style="{width,height}"></mlyplayer>
+		<mlyplayer ref="player" :src="src" :autoplay="autoplay" :muted="muted" :controls="controls" :isMuxAllowed="isMuxAllowed" :isLoaderAllowed="isLoaderAllowed" :style="{width,height}"></mlyplayer>
 	</view>
 </template>
 
@@ -15,7 +15,10 @@
 				src: "https://vsp-stream.s3.ap-northeast-1.amazonaws.com/HLS/raw/SpaceX.m3u8",
 				autoplay: true,
 				muted: false,
-				controls: true
+				controls: true,
+				originOnly: false,
+				isMuxAllowed: true,
+				isLoaderAllowed: true,
 			}
 		},
 		onReady() {
@@ -28,6 +31,8 @@
 			uni.$off('pause', this.onpause)
 			uni.$off('muted', this.onMuted)
 			uni.$off('controls', this.onControls)
+			uni.$off('isMuxAllowed', this.onMuxAllowed)
+			uni.$off('isLoaderAllowed', this.onLoaderAllowed)
 			
 		},
 		created() {
@@ -37,6 +42,8 @@
 			uni.$on('pause', this.onpause)
 			uni.$on('muted', this.onMuted)
 			uni.$on('controls', this.onControls)
+			uni.$on('isMuxAllowed', this.onMuxAllowed)
+			uni.$on('isLoaderAllowed', this.onLoaderAllowed)
 		},
 		methods: {
 			onStart() {
@@ -56,6 +63,12 @@
 			},
 			onControls(controls) {
 				this.controls = controls
+			},
+			onMuxAllowed(isMuxAllowed) {
+				this.isMuxAllowed = isMuxAllowed
+			},
+			onLoaderAllowed(isLoaderAllowed) {
+				this.isLoaderAllowed = isLoaderAllowed
 			},
 			videosize() {
 				si = uni.getSystemInfoSync()
