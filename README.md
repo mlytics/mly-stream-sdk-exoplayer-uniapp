@@ -1,4 +1,4 @@
-## Mlytics Uniapp Plugin README
+# mly-stream-sdk-exoplayer-uniapp
 
 ## Initialize
 ​
