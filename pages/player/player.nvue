@@ -1,12 +1,13 @@
 <template>
 	<view class="player-wrapper">
-		<mlyplayer ref="player" :src="src" :autoplay="autoplay" :muted="muted" :controls="controls" :isMuxAllowed="isMuxAllowed" :isLoaderAllowed="isLoaderAllowed" :style="{width,height}"></mlyplayer>
+		<mlyplayer ref="player" :src="src" :autoplay="autoplay" :muted="muted" :controls="controls"
+			:isMonitorAllowed="isMonitorAllowed" :isLoaderAllowed="isLoaderAllowed" :style="{width,height}"></mlyplayer>
 	</view>
 </template>
 
 <script>
-	let si = false,
-		nvue = false
+	let systemInfo = undefined
+	let nvue = undefined
 	export default {
 		data() {
 			return {
@@ -16,8 +17,7 @@
 				autoplay: true,
 				muted: false,
 				controls: true,
-				originOnly: false,
-				isMuxAllowed: true,
+				isMonitorAllowed: true,
 				isLoaderAllowed: true,
 			}
 		},
@@ -31,9 +31,9 @@
 			uni.$off('pause', this.onpause)
 			uni.$off('muted', this.onMuted)
 			uni.$off('controls', this.onControls)
-			uni.$off('isMuxAllowed', this.onMuxAllowed)
+			uni.$off('isMonitorAllowed', this.onMonitorAllowed)
 			uni.$off('isLoaderAllowed', this.onLoaderAllowed)
-			
+
 		},
 		created() {
 			uni.$on('start', this.onStart)
@@ -42,7 +42,7 @@
 			uni.$on('pause', this.onpause)
 			uni.$on('muted', this.onMuted)
 			uni.$on('controls', this.onControls)
-			uni.$on('isMuxAllowed', this.onMuxAllowed)
+			uni.$on('isMonitorAllowed', this.onMonitorAllowed)
 			uni.$on('isLoaderAllowed', this.onLoaderAllowed)
 		},
 		methods: {
@@ -64,22 +64,21 @@
 			onControls(controls) {
 				this.controls = controls
 			},
-			onMuxAllowed(isMuxAllowed) {
-				this.isMuxAllowed = isMuxAllowed
+			onMonitorAllowed(isMonitorAllowed) {
+				this.isMonitorAllowed = isMonitorAllowed
 			},
 			onLoaderAllowed(isLoaderAllowed) {
 				this.isLoaderAllowed = isLoaderAllowed
 			},
 			videosize() {
-				si = uni.getSystemInfoSync()
-				let small = si.windowWidth < si.windowHeight
+				systemInfo = systemInfo || uni.getSystemInfoSync()
+				let portrait = systemInfo.windowWidth < systemInfo.windowHeight
 
 				nvue = nvue || uni.getCurrentSubNVue()
 
-				let w = si.windowWidth
-				let h = small ? w * 0.5625 : si.windowHeight
-				let t = small ? si.statusBarHeight + 49 : 0
-
+				let w = systemInfo.windowWidth
+				let h = portrait ? w * 9 / 16 : systemInfo.windowHeight
+				let t = portrait ? systemInfo.statusBarHeight + 49 : 0
 
 				this.width = w + 'px'
 				this.height = h + 'px'
@@ -103,14 +102,5 @@
 		top: 0;
 		bottom: 0;
 		background-color: #000;
-	}
-
-	.player {
-		/* width: 375px;
-		height: 200px; */
-	}
-
-	.button {
-		margin-top: 20px;
 	}
 </style>

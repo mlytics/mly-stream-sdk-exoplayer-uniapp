@@ -26,8 +26,8 @@ driver.initialize({
 |autoplay|Boolean|true|true: start play when ready|
 |muted|Boolea|false|true: muted|
 |controls|Boolean|true|true: show contolls|
-|isMuxAllowed|Boolean|true|true: allowed mux data|
-|isLoaderAllowed|Boolean|true|true: allowed loader|
+|isMonitorAllowed|Boolean|true|true: allow monitor|
+|isLoaderAllowed|Boolean|true|true: allow loader|
 
 ​
 ### mlyplayer functions:

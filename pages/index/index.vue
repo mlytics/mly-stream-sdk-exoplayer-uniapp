@@ -27,11 +27,11 @@
 		</view>
 		<view class="btn">
 			<view style="margin-bottom: 10px;padding-left: 10px;">
-				Mux Allowed: {{isMuxAllowed}}
+				Monitor Allowed: {{isMonitorAllowed}}
 			</view>
 			<view class="box">
-				<button class="button" type="primary" @click="muxAllowedClick()(true)">Yes</button>
-				<button class="button" type="primary" @click="muxAllowedClick(false)">No</button>
+				<button class="button" type="primary" @click="monitorAllowedClick(true)">Yes</button>
+				<button class="button" type="primary" @click="monitorAllowedClick(false)">No</button>
 			</view>
 		</view>
 		<view class="btn">
@@ -53,13 +53,13 @@
 			return {
 				muted: false,
 				controls: true,
-				isMuxAllowed: true,
+				isMonitorAllowed: true,
 				isLoaderAllowed: true,
 			}
 		},
 		onLoad() {
 			if (driver) {
-				driver.initialize({clientID: "cegh8d9j11u91ba1u600"})
+				driver.initialize({clientID: "cegh8d9j11u91ba1u600", debug: true})
 			}
 		},
 		onHide() {
@@ -86,9 +86,9 @@
 				this.controls = controls
 				uni.$emit('controls',controls)
 			},
-			muxAllowedClick(b) {
-				this.isMuxAllowed = b
-				uni.$emit('isMuxAllowed',b)
+			monitorAllowedClick(b) {
+				this.isMonitorAllowed = b
+				uni.$emit('isMonitorAllowed',b)
 			},
 			loaderAllowedClick(b) {
 				this.isLoaderAllowed = b
