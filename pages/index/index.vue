@@ -59,7 +59,7 @@
 		},
 		onLoad() {
 			if (driver) {
-				driver.initialize({clientID: "cegh8d9j11u91ba1u600", debug: true})
+				driver.initialize({clientID: "cegh8d9j11u91ba1u600", debug: true, sampleRate: 0.5})
 			}
 		},
 		onHide() {

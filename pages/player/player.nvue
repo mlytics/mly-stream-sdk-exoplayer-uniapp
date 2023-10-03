@@ -25,6 +25,7 @@
 			this.videosize()
 		},
 		destroyed() {
+			this.onStop()
 			uni.$off('start', this.onStart)
 			uni.$off('stop', this.onStop)
 			uni.$off('play', this.onplay)
@@ -33,7 +34,6 @@
 			uni.$off('controls', this.onControls)
 			uni.$off('isMonitorAllowed', this.onMonitorAllowed)
 			uni.$off('isLoaderAllowed', this.onLoaderAllowed)
-
 		},
 		created() {
 			uni.$on('start', this.onStart)
