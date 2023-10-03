@@ -5,7 +5,8 @@
 ```sh
 const driver = uni.requireNativePlugin('UniMlyDriver');
 driver.initialize({
-	clientID: "YOUR_CLIENT_ID"
+	clientID: "YOUR_CLIENT_ID",
+	sampleRate: 1.0
 })
 ```
 ​
